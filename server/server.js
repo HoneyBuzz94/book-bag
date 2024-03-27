@@ -42,8 +42,4 @@ const startApolloServer = async () => {
 
 startApolloServer();
 
-// Do we need these?
-// const routes = require("./routes");
-// app.use(routes);
-
 // REFACTORED
