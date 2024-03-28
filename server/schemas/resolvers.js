@@ -14,6 +14,8 @@ const resolvers = {
   Mutation: {
     addUser: async (parent, { username, email, password }) => {
       const user = await User.create({ username, email, password });
+      const token = signToken(user);
+      return { token, user };
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
@@ -31,24 +33,23 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    saveBook: async (parent, { userId, book }, context) => {
+    saveBook: async (parent, { bookInput }, context) => {
       if (context.user) {
         return User.findOneAndUpdate(
-          { _id: userId },
-          { $addToSet: { savedBooks: book } },
+          { _id: context.user._id },
+          { $addToSet: { savedBooks: bookInput } },
           { new: true, runValidators: true }
         );
       }
     },
-    deleteBook: async (parent, { book }, context) => {
-      if (context.user) {
-        return User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { savedBooks: { bookId: book.bookId } } },
-          { new: true }
-        );
-      }
-      throw AuthenticationError;
+    deleteBook: async (parent, { bookId }, context) => {
+      return User.findOneAndUpdate(
+        { _id: context.user._id },
+        { $pull: { savedBooks: { bookId } } },
+        { new: true }
+      );
     },
   },
 };
+
+module.exports = resolvers;
