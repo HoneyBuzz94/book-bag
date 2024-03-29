@@ -35,6 +35,10 @@ const resolvers = {
     },
     saveBook: async (parent, { bookInput }, context) => {
       if (context.user) {
+        if(!bookInput.description) {
+          console.log(bookInput);
+          delete bookInput.description;
+        }
         return User.findOneAndUpdate(
           { _id: context.user._id },
           { $addToSet: { savedBooks: bookInput } },
@@ -45,7 +49,7 @@ const resolvers = {
     deleteBook: async (parent, { bookId }, context) => {
       return User.findOneAndUpdate(
         { _id: context.user._id },
-        { $pull: { savedBooks: { bookId } } },
+        { $pull: { savedBooks: { bookId: bookId } } },
         { new: true }
       );
     },

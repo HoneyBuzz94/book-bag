@@ -12,9 +12,9 @@ import Auth from "../utils/auth";
 import { removeBookId } from "../utils/localStorage";
 
 const SavedBooks = () => {
-  const userData = useQuery(QUERY_ME);
-  const [deleteBook, { error }] = useMutation(DELETE_BOOK, {
-    refetchQueries: [QUERY_ME, "me"],
+  const { loading, error, data } = useQuery(QUERY_ME);
+  const [deleteBook] = useMutation(DELETE_BOOK, {
+    refetchQueries: [{ query: QUERY_ME }],
   });
 
   const handleDeleteBook = async (bookId) => {
@@ -27,31 +27,33 @@ const SavedBooks = () => {
     }
   };
 
-  // if data isn't here yet, say so
-  if (!userData) {
+  if (loading) {
     return <h2>LOADING...</h2>;
+  }
+  if (error) {
+    return <h2>ERROR FETCHING DATA</h2>;
   }
 
   return (
     <>
-      <div fluid className="text-light bg-dark p-5">
+      <div className="text-light bg-dark p-5 container-fluid">
         <Container>
           <h1>Viewing saved books!</h1>
         </Container>
       </div>
       <Container>
         <h2 className="pt-5">
-          {userData.savedBooks.length
-            ? `Viewing ${userData.savedBooks.length} saved ${
-                userData.savedBooks.length === 1 ? "book" : "books"
+          {data.me.savedBooks.length
+            ? `Viewing ${data.me.savedBooks.length} saved ${
+                data.me.savedBooks.length === 1 ? "book" : "books"
               }:`
             : "You have no saved books!"}
         </h2>
         <Row>
-          {userData.savedBooks.map((book) => {
+          {data.me.savedBooks.map((book) => {
             return (
-              <Col md="4">
-                <Card key={book.bookId} border="dark">
+              <Col key={book.bookId} md="4">
+                <Card border="dark">
                   {book.image ? (
                     <Card.Img
                       src={book.image}
