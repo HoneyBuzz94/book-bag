@@ -2,26 +2,18 @@
 
 ## Description
 
-This app was created in order to allow users to search for books and save them to their profile. Essentially, to act as a virtual bookshelf. This project involved refactoring existing code to utilize GraphQL.
-
-This portfolio was created to provide a central location where I can display my completed and in-progress work. This was designed to be avialable to the public, though it's primary purpose is to be used as part of my professional resume when applying for work in the coding field.
+This app was created in order to allow users to search for books and save them to a user-generated profile. Essentially, this application acts as a virtual bookshelf. This project involved refactoring existing code to utilize GraphQL. It also involed deploying using a new platform, Render. In order to refactor the code for this project, I had to become much more familiar with the ins and outs of using GraphQl to set up and manage a database on the back and front end of the application.
 
 ## Usage
 
-This webpage is live and can be accessed at: https://honeybuzz94.github.io/portfolio_2024/
+The webpage is live and can be accessed at: https://book-bag.onrender.com/
 
-![screenshot of portfolio home page](assets/screenshot.jpg)
+![screenshot of book-bag home page](screenshot.png)
 
 ## Credits
 
-There were no collaborators on this project.
+The following are people who assisted with creating this project:
+* [Karina Guerrero](https://github.com/krausyd)
+* [Jaytee Padilla](https://github.com/jaytee-padilla)
 
-The following resources were used to assist with the development of this project:
-
-* [w3schools](https://www.w3schools.com)
-* [w3docs](https://www.w3docs.com/snippets/html/how-to-create-an-html-button-that-acts-like-a-link.html)
-* [Tony Teaches Tech](https://www.youtube.com/watch?v=xHFzQ8QRjGU)
-* [HubSpot](https://blog.hubspot.com/marketing/jump-link-same-page)
-
-Placeholder images were acquired from Google image search using images with a creative commons license.
 ---
