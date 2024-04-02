@@ -6,7 +6,7 @@ This app was created in order to allow users to search for books and save them t
 
 ## Usage
 
-The webpage is live and can be accessed at: https://book-bag.onrender.com/
+The webpage is live and can be accessed at: https://book-bag-2.onrender.com/
 
 ![screenshot of book-bag home page](screenshot.png)
 
@@ -15,5 +15,7 @@ The webpage is live and can be accessed at: https://book-bag.onrender.com/
 The following are people who assisted with creating this project:
 * [Karina Guerrero](https://github.com/krausyd)
 * [Jaytee Padilla](https://github.com/jaytee-padilla)
+* Camille Bagnani
+* William Rankin
 
 ---
